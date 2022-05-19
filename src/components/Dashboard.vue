@@ -1,42 +1,45 @@
 <template>
-  <div id="burger-table">
-    <div>
-      <div id="burger-table-heading">
-        <div class="order-id">Id</div>
-        <div>Cliente</div>
-        <div>Celular</div>
-        <div>Pão</div>
-        <div>Carne</div>
-        <div>Opcionais</div>
-        <div>Status</div>
-        <!-- <div><md-icon>add</md-icon></div> -->
-        <div>Ação</div>
-      </div>
-    </div>
-    <div v-show="!burgers" class="sem-registro"><span>Nenhum registro cadastrado.</span></div>
-    <div id="burger-table-rows" v-show="burgers">
-      <div class="burger-table-row" v-for="row in burgers" :key="row.id">
-        <div class="order-number">{{row.id}}</div>
-        <div><span></span>{{row.nome}}</div>
-        <div>{{row.celular}}</div>
-        <div>{{row.pao}}</div>
-        <div>{{row.carne}}</div>
-        <div>
-          <ul>
-            <li v-for="(opcional, index) in row.opcionais" v-bind:key="index">{{opcional}}</li>           
-          </ul>
-        </div>
-        <div>
-          <select name="status" id="status" @change="updateBurger($event, row.id)">
-            <option value="">Selecione:</option>
-            <option v-for="item in status" v-bind:key="item.id" :value="item.tipo" :selected="row.status == item.tipo">{{item.tipo}}</option>
-          </select>
-        </div>
-        <div>
-          <button class="delete-btn" v-on:click="deletePedido(row.id)">Cancelar</button>
-        </div>
-      </div>   
-    </div>
+  <div class="container">
+    <div class="table-wrapper">
+      <div v-show="!burgers" class="sem-registro"><span>Nenhum registro cadastrado.</span></div>
+      <table v-show="burgers">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Cliente</th>
+            <th>Celular</th>
+            <th>Pão</th>
+            <th>Carne</th>
+            <th>Opcionais</th>
+            <th>Status</th>
+            <th>Ação</th>
+          </tr>
+        </thead>    
+        <tbody>         
+          <tr v-for="row in burgers" :key="row.id">
+            <td>{{row.id}}</td>
+            <td>{{row.nome}}</td>
+            <td>{{row.celular}}</td>
+            <td>{{row.pao}}</td>
+            <td>{{row.carne}}</td>
+            <td>
+              <ul>
+                <li v-for="(opcional, index) in row.opcionais" v-bind:key="index">{{opcional}}</li>                
+              </ul>
+            </td>
+            <td>
+              <select name="status" id="status" @change="updateBurger($event, row.id)">
+                <option value="">Selecione:</option>
+                <option v-for="item in status" v-bind:key="item.id" :value="item.tipo" :selected="row.status == item.tipo">{{item.tipo}}</option>
+              </select>
+            </td>
+            <td>
+              <button class="delete-btn" v-on:click="deletePedido(row.id)">Cancelar</button>
+            </td>
+          </tr>                                               
+        </tbody>
+      </table>
+    </div> 
   </div>
   <div id="position-msg"><Message v-bind:msg="msg" v-show="msg" /></div>
 </template>
@@ -128,44 +131,30 @@
 
 <style scoped>
 
-  .burger-table {
-    max-width: 1200px;
-    margin: 0 auto;
+  .table-wrapper {
+    max-height: 600px;
+    overflow-y: auto;
   }
 
-  #burger-table-heading,
-  #burger-table-rows,
-  .burger-table-row {
-    display: flex;
-    flex-wrap: wrap;
+  table {
+     border-collapse: none;
+     border-spacing: 0px;
+     width: 100%;
   }
 
-  #burger-table-heading {
-    font-weight: bold;
-    padding: 12px;
-    /* border: 1px solid #333; */
+  th {
+    position: sticky;
+    top: 0;
     background-color: rgb(234, 150, 66);
     color: white;
   }
 
-  #burger-table-heading div,
-  .burger-table-row div {
-    width: 13%;
+  th, td {
+    padding: 10px;
   }
 
-  .burger-table-row {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #CCC
-  }
-
-  .burger-table-row:hover {
+  tr:hover {
     background-color: rgba(234, 150, 66, 0.2);
-  }
-
-  #burger-table-heading .order-id,
-  .burger-table-row .order-number {
-    width: 5%;
   }
 
   select {
@@ -205,12 +194,12 @@
   }
 
   .sem-registro {
-    height: 40px;
+    height: auto;
+    width: 100%;
     padding: 8px;
     color: #FFF;
     margin-top: 20px;
-    background-color: rgba(210, 19, 19, 0.9);
-    border-radius: 5px;
+    background-color: rgba(210, 19, 19, 0.7);    
   }
 
 </style>
