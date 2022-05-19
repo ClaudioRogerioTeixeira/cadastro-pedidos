@@ -5,14 +5,14 @@
       <table v-show="burgers">
         <thead>
           <tr>
-            <th>Id</th>
-            <th>Cliente</th>
-            <th>Celular</th>
-            <th>Pão</th>
-            <th>Carne</th>
-            <th>Opcionais</th>
-            <th>Status</th>
-            <th>Ação</th>
+            <th width="3%">Id</th>
+            <th width="30%">Cliente</th>
+            <th width="15%">Celular</th>
+            <th width="10%">Pão</th>
+            <th width="10%">Carne</th>
+            <th width="10%">Opcionais</th>
+            <th width="10%">Status</th>
+            <th width="5%">Ação</th>
           </tr>
         </thead>    
         <tbody>         
@@ -151,6 +151,7 @@
   th {
     position: sticky;
     top: 0;
+    text-align: left;
     background-color: rgb(234, 150, 66);
     color: white;
   }
