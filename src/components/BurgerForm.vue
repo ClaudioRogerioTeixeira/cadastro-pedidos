@@ -59,7 +59,7 @@
         opcionais: [],
 
         msg: null,
-        baseUrl: 'http://localhost:3000'
+        baseUrl: 'https://apppedidosapi.herokuapp.com'
       }
     },
     methods: {      
@@ -68,18 +68,21 @@
       async getCarnes() {
         const req = await fetch(`${this.baseUrl}/carnes`);
         this.carnes = await req.json();
+        console.log('carnes', this.carnes);
       },
 
       // Carrega os pães
       async getPaes() {
         const req = await fetch(`${this.baseUrl}/paes`);
         this.paes = await req.json();
+        console.log('paes', this.paes);
       },
 
       // Carrega os opcionais
       async getOpcionais() {
         const req = await fetch(`${this.baseUrl}/opcionais`);
         this.opcionaisdata= await req.json();
+        console.log('opcionaisdata', this.opcionaisdata);
       },
 
       // Inclui Hamburguer

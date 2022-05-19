@@ -57,7 +57,7 @@
         burgers: null,
         status: [],
         msg: null,
-        baseUrl: 'http://localhost:3000',
+        baseUrl: 'https://apppedidosapi.herokuapp.com',
       }
     },
 
