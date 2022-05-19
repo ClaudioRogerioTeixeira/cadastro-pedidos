@@ -131,9 +131,15 @@
 
 <style scoped>
 
+.container {
+  width: 100%;
+}
+
   .table-wrapper {
+    width: 100%;
     max-height: 600px;
     overflow-y: auto;
+    /* background-color: red; */
   }
 
   table {

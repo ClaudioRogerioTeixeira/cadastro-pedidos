@@ -1,5 +1,5 @@
 <template>
-  <div class="main-container">
+  <div class="container">
     <h2>Gerenciar pedidos</h2>
     <Dashboard />
   </div>
@@ -17,6 +17,12 @@
 </script>
 
 <style scoped>
+
+  .container {
+    margin-top: 40px;
+    padding: 0px 20px;
+  }
+
   h2 {
     display: flex;
     justify-content: center;
